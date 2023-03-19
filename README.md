@@ -14,7 +14,7 @@ Create an  app to generate a number of questions to test your knowledge of codin
 ## Installation
 
 click on the link below to load the quiz and follow instructions on the front page.
-
+https://nanthantk.github.io/Quiz/
 
 ## visuals
 ![quiz home.] 

@@ -1,0 +1,62 @@
+body {
+    background-color: grey;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    /*display: flex;
+    flex-direction: column;
+    justify-content: center;*/
+    align-items: center;
+    border: 10px solid teal;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 60vw;
+    height: 70vh;
+    background-color: #f0ead6;
+    
+}
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;    
+    background-color: teal;
+    color: white;
+    display:flex;
+    height: 15vh;
+    font-size: 24px;
+  }
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vh;
+
+}
+
+.btn{
+    width: 20vw;
+    height: 5vh;
+    background-color: rgb(235, 237, 241);
+    color: teal;
+    margin: 10px 10px;
+    font-size: 18px;
+    border: solid 5px rgb(56, 50, 50);
+    border-radius: 5px;
+  }
+  table, th, td{
+    border-collapse: collapse;
+    font-size: 24px;
+    color: rgb(1, 36, 36);
+    border: 1px solid rgb(1, 36, 36);
+    /*width: 20vw;*/
+    height: 5vh;
+    
+  }
+  #nameCol{
+    width: 30vw;
+  }

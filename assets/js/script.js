@@ -1,12 +1,20 @@
-var startBtn = document.querySelector("#startBtn");
+var listEl = document.querySelector("#quizSelection");
+var li1 = document.querySelector("#choice1");
+var li2 = document.querySelector("#choice2");
+var li3 = document.querySelector("#choice3");
+var li4 = document.querySelector("#choice4");
+var h1El= document.querySelector("#quizQuestion");
+var h2El= document.querySelector("#result");
 var quizArea = document.querySelector(".quizArea");
-var timeLeftDisplay= document.querySelector("#timeLeftDisplay")
-var timeLeft = 0;
+var timeLeftDisplay= document.querySelector("#timeLeftDisplay");
+var currentScore = document.querySelector("#currentScore");
+var timeLeft = 50;
 var questionsLeft=0
 var score = 0;
+    
 var isCorrect = false;
 var canClick=true;
-var quizQuestions = [
+var questions = [
     {question: "What tag is used to define an interactive field where users can enter data?",
     a_text: "<p>",
     b_text: "<div>",
@@ -42,37 +50,39 @@ var quizQuestions = [
     d_text: "javascript>",
     answer: "3"}
 ];
+var quizQuestions =[];
+var currentQuestion = {};
 
-var h1El = document.createElement ("h1");
-var listEl = document.createElement("ol");
-// Create ordered list items
-var li1 = document.createElement("li");
-var li2 = document.createElement("li");
-var li3 = document.createElement("li");
-var li4 = document.createElement("li");
-var divEl=document.createElement("div");
-var h2El= document.createElement ("h2");
-
-
-function getChoice(i){
+function quiz(){
+        
+    score =0;
+    localStorage.setItem("score",score);
+    quizQuestions =[...questions]
+    console.log ("quizquestions");
+    console.log(quizQuestions)
     
-    quizQuestion = quizQuestions[i];
-               
-    h1El.textContent=quizQuestions.question;
-    li1.textContent= "1. " + quizQuestion.a_text;
-    li2.textContent= "2. " + quizQuestion.b_text;
-    li3.textContent= "3. " + quizQuestion.c_text;
-    li4.textContent= "4. " + quizQuestion.d_text;
+    getChoice();
 
-    quizArea.appendChild(h1El);
-    quizArea.appendChild(divEl);
-    divEl.appendChild(listEl);
-    console.log("div created");
-    listEl.appendChild(li1);
-    console.log("list items created");
-    listEl.appendChild(li2);
-    listEl.appendChild(li3);
-    listEl.appendChild(li4);
+}
+
+
+function getChoice(){    
+   
+    if (quizQuestions.length === 0 ) {
+        //go to the end page
+        return window.location.assign("./player.html");
+        
+      }
+
+    //while(currentQuestion.length>0){
+    currentQuestion = quizQuestions[0]
+    console.log (currentQuestion);
+    
+    h1El.textContent = currentQuestion.question;
+    li1.textContent = "1. " + currentQuestion.a_text;
+    li2.textContent = "2. " + currentQuestion.b_text;
+    li3.textContent = "3. " + currentQuestion.c_text;
+    li4.textContent = "4. " + currentQuestion.d_text;
 
     console.log("quiz displayed");  
 
@@ -82,78 +92,59 @@ function getChoice(i){
     li3.setAttribute("data-number", "3" );
     li4.setAttribute("data-number", "4" );
 
-    li1.setAttribute("data-answer", quizQuestion.answer );
-    li2.setAttribute("data-answer", quizQuestion.answer );
-    li3.setAttribute("data-answer", quizQuestion.answer );
-    li4.setAttribute("data-answer", quizQuestion.answer );
+    li1.setAttribute("data-answer", currentQuestion.answer );
+    li2.setAttribute("data-answer", currentQuestion.answer );
+    li3.setAttribute("data-answer", currentQuestion.answer );
+    li4.setAttribute("data-answer", currentQuestion.answer );
     
-    canClick =true;
+    quizQuestions.splice(0,1);
+    console.log ("testing splice");
+    console.log(quizQuestions);
+    
+    var canClick =true;
     listEl.addEventListener('click',function(event){
     console.log("clickd on OL");
     var element = event.target;
     var choice = element.getAttribute("data-number");
     var answer = element.getAttribute ("data-answer")
+
+    
     if (!canClick) return;
     canClick=false;
 
     console.log (choice +"selected choice");
     console.log (answer + "corrected choice")
         if (choice == answer) {
+            localStorage.getItem("score",score);
             score = score + 20;
+            localStorage.setItem("score",score);
             h2El.textContent ="Correct";
             h2El.setAttribute ("style", "color:green;")
-            console.log ("Correct");
-            divEl.appendChild(h2El);
+            localStorage.setItem("score",score);
+            console.log ("Correct"); 
+            console.log ("Correct");  
+            currentScore.textContent= "The current score is: " + score;
         }
         else {
             h2El.textContent ="Inorrect";
             h2El.setAttribute ("style", "color:red;")
             console.log ("Iorrect");
-            divEl.appendChild(h2El);
+            timeLeft=timeLeft-10;
+            timeLeftDisplay.textContent = "Time Left: " + timeLeft;
         }
     console.log (score);
+        
     });
-//getChoice(i);
+    
+    setTimeout(() => {
+        //selectedChoice.parentElement.classList.remove(classToApply);
+        getChoice();
+      }, 2000);
+   
+   // }   
 }
 
 
 
-
-
-function quiz(){
-     //to clear the quiz area for the questions
-    
-    startBtn.addEventListener("click", function(){
-        console.log("start quiz button clicked");
-        quizArea.innerHTML="";
-        
-       for (var i=0; i<quizQuestions.length; i++){
-       getChoice(i);
-       }
-        
-       
-        //console.log(i + "increased i");
-       // if (i == quizQuestions.length){
-           // return;
-     //   }
-       // else{
-           // setTimeout( function(){
-           //     console.log("delaying");
-           //     getChoice();
-          //  },1000);
-
-
-           
-      //  }
-        //console.log (choice + "in quiz");
-        
-
-    });
-    
-
-    timeLeftDisplay.append(" "+timeLeft);
-    console.log(timeLeftDisplay.innerHTML);   
- 
-}
 
 quiz();

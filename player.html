@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/player.css">
+    <title>Player</title>
+</head>
+<body>
+    <!-- this page gets the player's name and adds it to the Local storage 
+    as an array of objects-->
+    <div class ="container">
+        <div ID="input">
+            <label for="Name">Your Name: </label>
+            <input type="text" name ="name" id="nameText" placeholder="Enter your name">
+            <input id ="btn1" type="button" value="Submit">
+            
+        </div>
+        <div class="justify-center">
+            <a href="./game.html" > <button id ="btn">Play Again</button></a>
+            <a href="./highscore.html" > <button id ="btn">High Scores</button></a>
+            </div>
+    </div>
+    <script src="./assets/js/player.js"></script>
+</body>
+</html>

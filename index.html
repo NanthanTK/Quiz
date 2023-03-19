@@ -6,19 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>quiz</title>
+    <title>StartQuiz</title>
 </head>
 <body>
     <div class ="container">
-        <header >
-            <div>
-                <a href = "./highscore.html"> High Scores</a>
-            </div>
-            <div>          
-                <h3 id=timeLeftDisplay> Time left: </h3>
-            </div>
-        </header>
-                 
+        
+      <!-- this is the home page for the quiz>-->           
         <main >
             <div class ="quizArea">
                 <h1> Coding Quiz Challenge</h1>
@@ -28,7 +21,10 @@
                 <p>Keep in mind that the incorrect answers will 
                 penalise your time by ten seconds
                 </p>
-                <button id ="startBtn">Start Quiz</button>
+                <div class="justify-center">
+                <a href="./game.html" > <button id ="btn">Start Quiz</button></a>
+                <a href="./highscore.html" > <button id ="btn">High Scores</button></a>
+                </div>
             </div>
         </main>
        

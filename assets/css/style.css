@@ -5,7 +5,7 @@ body{
   align-items: center;
   justify-content: center;
 }
-
+/* to give a common theme is all the pages*/
 .container {
     /*display: block;*/
     border: 10px solid teal;
@@ -16,7 +16,6 @@ body{
     width: 60vw;
     height: 70vh;
     background-color: #f0ead6;
-    
   }
 
   header {
@@ -30,7 +29,7 @@ body{
   }
 
   header h3 {
-    font-size: 24px;
+    font-size: 18px;
     text-align: right;
   }
 
@@ -55,7 +54,7 @@ body{
   padding: 20px;
 }
  
-.quizArea div ol{
+#quizSelection{
   height: 30vh;
   display: flex;
   flex-direction: column;
@@ -63,18 +62,19 @@ body{
   justify-content: space-evenly;
 }
 .quizArea h1, p {
-  margin: 20px; 
+  margin: 10px; 
   line-height: 1.2;
-  font-size: 24px;
+  font-size: 36px;
+  color: teal;
 }
 li {
   text-align: left;
-  font-size: 30px;
+  font-size: 24px;
   background-color: teal;
   color: white;
-  width: 30vw;
-  margin: 20x 20px;
-  padding: 10px 10px;
+  width: 35vw;
+  margin: 10x 10px;
+  padding: 5px 5px;
   border-radius: 5px;
 }
 
@@ -83,9 +83,19 @@ li:hover{
 
 }
 
-#startBtn{
-  width: 40vw;
+#btn{
+  width: 20vw;
   height: 5vh;
   background-color: teal;
   color: white;
+  margin-bottom: 10px;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+#result{
+  font-size: 24px;
 }
